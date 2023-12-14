@@ -17,7 +17,11 @@ for i in data:
     salary = i.find('td', class_='title14').text.replace("от", "").replace('до', ' -').strip()
     description = i.find_all('div', class_='small')[-1].text
     url = 'https://rabota19.ru' + i.find("a").get("href")
-    print(name + '\n' + salary + '\n' + description + '\n' + url + '\n\n')
+#    print(name + '\n' + salary + '\n' + description + '\n' + url + '\n\n')
+
+page = soup.find_all('a', class_='page')
+all_page = page[-2].text
+print(all_page)
 
 # Создание базы данных SQLite
 connection = sqlite3.connect('my_base.db')
