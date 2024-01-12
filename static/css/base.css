@@ -1,0 +1,38 @@
+body{
+    background-image: url('/static/images/sqlite.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    }
+
+.title{
+    color: #00FFFF;
+    margin: 50px 40px;
+    font-size: 40pt;
+    text-shadow: 1px 0 5px #FF0000;
+    line-height: 45px;
+    word-spacing: 12px;
+    }
+
+.text{
+    color: #00FF00;
+    font-size: 30pt;
+    text-shadow: 2px 2px 4px #000000	;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
+
+.btn{
+    display: inline-block;
+    width: 320px;
+    margin: 0px 20px;
+    background: #FFC0CB;
+    color: #DC143C;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-family: Verdana, "Times New Roman", serif;
+    font-size: 25pt;
+    border-radius: 15px;
+    border: 5px solid;
+    margin-left: 350px;
+    }

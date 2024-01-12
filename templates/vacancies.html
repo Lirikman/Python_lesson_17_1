@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вакансии</title>
+</head>
+<body>
+  <h1>Актуальные вакансии</h1>
+  <table align="center" border="1">
+      <tr>
+          <th>№</th>
+          <th>Наименование</th>
+          <th>Заработная плата</th>
+          <th>Описание</th>
+          <th>Контакты</th>
+          <th>Ссылка</th>
+      </tr>
+      {% for s in  all_vac %}
+      <tr>
+          <td>{{s.name}}</td>
+          <td>{{s.salary}}</td>
+          <td>{{s.description}}</td>
+          <td>{{s.phone}}</td>
+          <td>{{s.card_url}}</td>
+      </tr>
+      {% endfor %}
+  </table>
+</body>
+</html>

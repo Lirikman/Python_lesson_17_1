@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Парсинг</title>
+    <link href="/static/css/parsing.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1 class="title">Поиск актуальных вакансий Республики Хакасия</h1>
+<h2 class="title">www.rabota19.ru</h2>
+<div>
+    <p>Всего страниц:</p> <p>{{all_page}}</p>
+</div>
+<form action="/vacancies.html" target="_blank" method="post">
+    <p>
+        <label>Введите номер страницы для парсинга</label>
+        <input type="number" name="number">
+        <input type="submit" value="Загрузить вакансии">
+    </p>
+</form>
+<a class="btn" align="center" href="/index.html">Описание проекта</a>
+<a class="btn" align="center" href="/base.html">База данных</a>
+</body>
+</html>
