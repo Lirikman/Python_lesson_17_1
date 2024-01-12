@@ -48,8 +48,9 @@ def parsing():
         soup = BeautifulSoup(response.text, 'lxml')
         page = soup.find_all('a', class_='page')
         all_page = page[-2].text
+        return render_template('parsing.html', all_page=all_page)
     else:
-        return render_template('parsing.html')
+        return 'Пока не знаю что'
 
 
 @app.route('/base.html', methods=['POST', 'GET'])
