@@ -9,14 +9,15 @@
 <h1 class="title">Поиск актуальных вакансий Республики Хакасия</h1>
 <h2 class="title">www.rabota19.ru</h2>
 <div>
-    <p>Всего страниц:</p> <p>{{all_page}}</p>
+    <p class="page">Всего страниц: {{all_page}}</p>
 </div>
 <form action="/vacancies.html" target="_blank" method="post">
     <p>
-        <label>Введите номер страницы для парсинга</label>
+        <label class="change_str">Введите номер страницы для парсинга</label>
         <input type="number" name="number">
-        <input type="submit" value="Загрузить вакансии">
+        <input class="search" align="center" type="submit" value="Загрузить вакансии">
     </p>
+    <br><br>
 </form>
 <a class="btn" align="center" href="/index.html">Описание проекта</a>
 <a class="btn" align="center" href="/base.html">База данных</a>

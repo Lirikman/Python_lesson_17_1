@@ -35,3 +35,27 @@ body{
     border: 5px solid;
     margin-left: 350px;
     }
+
+.page{
+    color: #00BFFF;
+    font-size: 30pt;
+    text-shadow: 2px 2px 4px #0000FF;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
+
+.change_str{
+    color: #00FA9A;
+    font-size: 30pt;
+    text-shadow: 1px 4px 1px #008080;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
+
+.search{
+    color: #FF00FF;
+    font-size: 20pt;
+    text-shadow: 1px 1px 1px #800080;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
