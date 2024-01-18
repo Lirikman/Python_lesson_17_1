@@ -41,7 +41,7 @@ def parsing():
         all_page = page[-2].text
         return render_template('parsing.html', all_page=all_page)
     else:
-        return 'Пока не знаю что'
+        pass
 
 
 @app.route('/base.html', methods=['POST', 'GET'])
