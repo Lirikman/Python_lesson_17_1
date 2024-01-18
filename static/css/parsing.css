@@ -44,6 +44,14 @@ body{
     margin-left: 20px;
     }
 
+.wait{
+    color: #FF0000;
+    font-size: 30pt;
+    text-shadow: 2px 1px 2px #6A5ACD;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
+
 .change_str{
     color: #00FA9A;
     font-size: 30pt;
