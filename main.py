@@ -23,22 +23,6 @@ connection.commit()
 connection.close()
 
 
-# Удаление информации из БД
-def del_bd(vac_id):
-    connect = sqlite3.connect('my_base.db')
-    cur = connect.cursor()
-    cur.execute("DELETE FROM Vacancies WHERE id = ?", (vac_id,))
-    connect.commit()
-    connect.close()
-
-
-
-# Вывод всех данных
-#connect = sqlite3.connect('my_base.db')
-#cur = connect.cursor()
-#all_vac = cur.fetchall()
-
-
 @app.route('/')
 @app.route('/index.html')
 def index():
@@ -61,8 +45,29 @@ def parsing():
 
 
 @app.route('/base.html', methods=['POST', 'GET'])
-def resume():
-    return render_template('base.html')
+def sqlite():
+    try:
+        connect = sqlite3.connect('my_base.db')
+        cur = connect.cursor()
+        cur.execute("SELECT * FROM Vacancies")
+    except:
+        return "Ошибка загрузки БД"
+    all_vac = cur.fetchall()
+    all_id = [x[0] for x in cur.execute("SELECT * FROM Vacancies")]
+    if request.method == "POST":
+        if len(all_vac) > 0:
+            vac_id = request.form['number']
+            try:
+                cur.execute("DELETE FROM Vacancies WHERE id = ?", (vac_id,))
+                connect.commit()
+                connect.close()
+            except:
+                return "Ошибка удаления данных"
+            return redirect('/base.html')
+        else:
+            return redirect('/base.html')
+    else:
+        return render_template('base.html', all_vac=all_vac, all_id=all_id)
 
 
 @app.route('/vacancies.html', methods=['POST', 'GET'])
@@ -78,7 +83,6 @@ def vac():
         data = soup.find_all('div', class_='title14 strong')
         for i in data:
             list_url.append('https://rabota19.ru' + i.find("a").get('href'))
-        print(list_url)
         # Информация о вакансии
         for card_url in list_url:
             response = requests.get(card_url, headers=headers)
@@ -87,14 +91,20 @@ def vac():
             data = soup.find('div', class_='main-content')
             try:
                 name = data.find("h1", class_='red').text.strip()
+            except:
+                name = 'Нет информации'
+            try:
                 tmp_sal = data.find('div', class_='title14').text.strip()
                 if tmp_sal is not None:
                     if tmp_sal.startswith('от'):
                         salary = data.find('div', class_='title14').text.replace("от", "").replace('до', ' -').strip()
                     else:
-                        salary = ''
+                        salary = 'Нет информации о зарплате'
                 else:
-                    salary = ''
+                    salary = 'Нет информации о зарплате'
+            except:
+                salary = 'Нет информации о зарплате'
+            try:
                 description = ''
                 tmp_des_1 = data.find_all('div')[4].text.strip()
                 if tmp_des_1 is not None:
@@ -110,28 +120,30 @@ def vac():
                         tmp_des_4 = data.find_all('div')[7].text.strip()
                         if tmp_des_4 is not None:
                             description += tmp_des_4
+            except:
+                description = 'Нет информации о вакансии'
+            try:
                 tmp_1 = data.find_all('div', class_='margin3')[1].text.strip()
                 phone = ''
                 if tmp_1.startswith('Телефон: '):
                     phone = tmp_1
                 else:
                     phone = data.find_all('div', class_='margin3')[2].text.strip()
-                print(name + '\n' + salary + '\n' + description + phone + '\n' + card_url + '\n\n')
+            except:
+                phone = 'Нет информации о телефоне'
                 # Добавление информации в БД
+            try:
                 connect = sqlite3.connect('my_base.db')
                 cur = connect.cursor()
                 cur.execute('INSERT INTO Vacancies (vac, text, salary, contacts, url) VALUES (?, ?, ?, ?, ?)',
                             (name, description, salary, phone, card_url))
                 connect.commit()
                 connect.close()
-#                print(name + '\n' + salary + '\n' + description + phone + '\n' + card_url + '\n\n')
             except:
-                return "Ошибка получения информации"
+                return "Ошибка добавления данных в БД"
+        return redirect('/base.html')
     else:
-        connect = sqlite3.connect('my_base.db')
-        cur = connect.cursor()
-        all_vac = cur.fetchall()
-        return render_template('/vacancies.html', all_vac=all_vac)
+        return render_template('/parsing.html')
 
 
 if __name__ == '__main__':

@@ -7,6 +7,39 @@
 </head>
 <body>
 <h1 class="title">База данных SQLite</h1>
+<table align="center" border="1">
+      <tr>
+          <th class="th">№</th>
+          <th class="th">Наименование</th>
+          <th class="th">Описание</th>
+          <th class="th">Заработная плата</th>
+          <th class="th">Контакты</th>
+          <th class="th">Ссылка</th>
+      </tr>
+      {% for s in all_vac %}
+      <tr>
+          <td class="td">{{s[0]}}</td>
+          <td class="td">{{s[1]}}</td>
+          <td class="td">{{s[2]}}</td>
+          <td class="td">{{s[3]}}</td>
+          <td class="td">{{s[4]}}</td>
+          <td class="td">{{s[5]}}</td>
+      </tr>
+      {% endfor %}
+</table>
+<br><br>
+<form method="post">
+    <label class="delete">
+        <b>Введите номер для удаления записи из БД:</b>
+    </label>
+    <select class="btn_del" name="number">
+        {% for i in all_id %}
+        <option>{{i}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" class="btn_del" value="УДАЛИТЬ">
+</form>
+<br><br>
 <a class="btn" align="center" href="/index.html">Описание проекта</a>
 <a class="btn" align="center" href="/parsing.html">Парсинг</a>
 </body>

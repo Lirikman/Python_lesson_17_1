@@ -33,7 +33,7 @@ body{
     font-size: 25pt;
     border-radius: 15px;
     border: 5px solid;
-    margin-left: 350px;
+    margin-left: 150px;
     }
 
 .page{
@@ -59,3 +59,12 @@ body{
     font-family: tahoma, "Times New Roman", serif;
     margin-left: 20px;
     }
+
+.text{
+    color: #FFFF00;
+    font-size: 35pt;
+    text-shadow: 1px 0 2px #9370DB;
+    -webkit-text-stroke: 1px #DC143C;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+}

@@ -22,6 +22,39 @@ body{
     margin-left: 20px;
     }
 
+.th{
+    background: #7CFC00;
+    line-height: 28px;
+    color: #6A5ACD;
+    border-spacing: 1px;
+    }
+
+.td{
+    background: #FFD700;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    opacity: 0.95;
+    }
+
+.delete{
+    color: #DC143C;
+    font-size: 25pt;
+    text-shadow: 2px 2px 4px #FFD700;
+    -webkit-text-stroke: 1px #6495ED;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
+
+.btn_del{
+    color: #7B68EE;
+    background: #E6E6FA;
+    font-size: 15pt;
+    font-family: tahoma, "Times New Roman", serif;
+    margin-left: 20px;
+    }
+
 .btn{
     display: inline-block;
     width: 320px;
